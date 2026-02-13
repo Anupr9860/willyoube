@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  img {
+    width: 250px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    color: #d1005b;
+  }
+
+  #message {
+    margin: 10px;
+    font-size: 18px;
+    color: #333;
+  }
+
+  .buttons {
+    margin-top: 20px;
+  }
+
+  button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+  }
+
+  #yesBtn {
+    background: #ff4d88;
+    color: white;
+    transition: 0.3s;
+  }
+
+  #noBtn {
+    background: #ddd;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>Will you be my Valentine? ❤️</h1>
+
+<!-- Teddy image (change link if you want) -->
+<img src="ChatGPT Image Feb 13, 2026, 07_45_53 PM.png" alt="teddy">
+
+
+<div id="message"></div>
+
+<div class="buttons">
+  <button id="yesBtn">Yes </button>
+  <button id="noBtn">No </button>
+</div>
+
+<script>
+let noClicks = 0;
+const messages = [
+  "Please? 🥺",
+  "Are you sure? ",
+  "Think again? ",
+  "I'll be very sad...",
+  " your Last chance "
+];
+
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const message = document.getElementById("message");
+
+noBtn.addEventListener("click", () => {
+  noClicks++;
+
+  if (noClicks <= 5) {
+    message.textContent = messages[noClicks - 1];
+
+    // Make YES button bigger
+    let size = 18 + noClicks * 10;
+    yesBtn.style.fontSize = size + "px";
+    yesBtn.style.padding = (12 + noClicks * 5) + "px " + (25 + noClicks * 10) + "px";
+  }
+
+  // After 5 clicks remove NO button
+  if (noClicks === 5) {
+    noBtn.style.display = "none";
+    message.textContent = "You have no choice now 💋";
+  }
+});
+
+yesBtn.addEventListener("click", () => {
+  document.body.innerHTML = `
+    <h1>Yayyyy!!! 💕</h1>
+    <p>You made me the happiest person 🥰</p>
+  `;
+});
+</script>
+
+</body>
+</html>
